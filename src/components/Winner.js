@@ -2,14 +2,10 @@ import React, { useContext } from 'react';
 
 import { GameContext } from '../contexts/GameContext';
 
-export default function Board() {
-  const context = useContext(GameContext);
+export default function Winner() {
+  const { whoIsWinner } = useContext(GameContext);
 
-  console.log(context);
+  if (!whoIsWinner) return <></>;
 
-  return (
-    <div>
-      <p>Tabuleiro</p>
-    </div>
-  );
+  return <p className="winner">{whoIsWinner} ganhou !!!</p>;
 }

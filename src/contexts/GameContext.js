@@ -8,6 +8,8 @@ export const GameContext = createContext();
 export default function GameContextProvider({ children }) {
   const [squares, setSquares] = useState(Array(9).fill(null)); // array 9 posição value null
   const [isXNext, setIsXNext] = useState(true); // é a vez do X? true or false vez do O
+  const [whoIsWinner, setWhoIsWinner] = useState('');
+  const [history, setHistory] = useState([]);
 
   // olha a importancia do state, todo mundo recebe algo, que precisa esta dentro desse state
   // criar um obj so pra referenciar ( tudo que for tendo de estado, joga aqui)
@@ -16,10 +18,14 @@ export default function GameContextProvider({ children }) {
     setSquares,
     isXNext,
     setIsXNext,
+    whoIsWinner,
+    setWhoIsWinner,
+    history,
+    setHistory,
   };
   return <GameContext.Provider value={state}>{children}</GameContext.Provider>;
 }
 
 GameContextProvider.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };

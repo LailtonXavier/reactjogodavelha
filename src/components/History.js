@@ -1,15 +1,32 @@
 import React, { useContext } from 'react';
+import uuid from 'uuid/dist/v4';
 
 import { GameContext } from '../contexts/GameContext';
 
-export default function Board() {
-  const context = useContext(GameContext);
+export default function History() {
+  const { history, setHistory, setSquares, setIsXNext, setWhoIsWinner } =
+    useContext(GameContext);
 
-  console.log(context);
+  const handleClick = (index) => {
+    // essa part ele elimina as demais jogadas pelo o indice atual FD
+    const newHistory = [...history];
+    newHistory.splice(index, Number.MAX_SAFE_INTEGER);
+    setHistory(newHistory);
+
+    setSquares(history[index].squares);
+    setIsXNext(history[index].isNext);
+    setWhoIsWinner(history[index].whoIsWinner);
+  };
 
   return (
     <div>
-      <p>Tabuleiro</p>
+      {history.map((data, index) => (
+        <div key={uuid()} className="history">
+          <button type="button" onClick={() => handleClick(index)}>
+            Voltar para jogada {index}
+          </button>
+        </div>
+      ))}
     </div>
   );
 }

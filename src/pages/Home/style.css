@@ -45,3 +45,34 @@
   display: block;
   padding-bottom: 100%;
 }
+
+.winner {
+  position: absolute;
+  top: 12px;
+  right: 36%;
+  border: 1px solid black;
+  font-size: 1rem;
+  background: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.history button {
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.822);
+  background: rgb(21, 22, 22);
+  border-radius: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.history {
+  display: inline-block;
+  padding: 0.3rem;
+  color: red;
+  border: 1px solid rgb(99, 88, 88);
+  text-align: center;
+  margin: 4px;
+  border-radius: 12px;
+}
+
